@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}Prediction{% endblock title %} 
+
+{% block body %}
+
+<section class="text-gray-600 body-font -my-9">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-12 -my-9">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Insurance Premium Prediction</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Security is a priority, not an option </p>
+      </div>
+      <form method="POST" action="">
+        {% csrf_token %}
+      <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end ">
+            <div class="relative flex-grow w-full">
+            <br><b><label for="full-name" class="leading-7 text-sm text-gray-600">Enter the Age:</label></b></br>
+            <input type="text" id="age" placeholder="Enter Age"name="age" class="w-full bg-light-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-transparent focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            <div class="relative flex-grow w-full">
+            <br><b><label for="email" class="leading-7 text-sm text-gray-600">Select the Gender(male/female):</label></b></br>
+            <select id="sex" name="sex" class="form-select" aria-label="Default select example">
+                <option selected>Select Gender</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+              </select>
+            </div>
+            
+        </div> 
+        <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+            <br><b><label for="full-name" class="leading-7 text-sm text-gray-600">Enter BMI:</label></b></br>
+            <input type="text" id="bmi" name="bmi" placeholder="BMI" class="w-full bg-light-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-transparent focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            <div class="relative flex-grow w-full">
+            <br><b><label for="email" class="leading-7 text-sm text-gray-600">Enter the Number of Children:</label></b></br>
+            <input type="text" id="children" name="children" placeholder="No of Children"class="w-full bg-light-500 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-transparent focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" >
+            </div>
+            
+        </div>  <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+            <br><b><label for="full-name" class="leading-7 text-sm text-gray-600">Are you smoker?</label></b></br>
+            <select id="smoker" name="smoker" class="form-select" aria-label="Default select example">
+                <option selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>            
+            </div>
+            <div class="relative flex-grow w-full">
+           <br><b><label for="email" class="leading-7 text-sm text-gray-600">Enter the Region:</label></b></br>
+           <select id="region" name="region"class="form-select" aria-label="Default select example">
+            <option selected>Select Region</option>
+            <option value="1">Southeast</option>
+            <option value="0">Southwest</option>
+            <option value="3">Northeast</option>
+            <option value="2">Northwest</option>
+
+          </select>       
+             </div>
+            
+        </div>       
+        
+        
+        <div class="text-center my-3"><button type="submit" class="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">Predict</button></div >
+        <div   class="text-center my-3 font-medium   text-3xl text-dark  " >
+            {% if output %}
+            <h2> Insurance Premium : {{output}}</h2>
+            {% endif %}
+        </div>
+    </form>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock body %}
+
+
+
+
